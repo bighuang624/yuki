@@ -46,10 +46,12 @@ function writeTitle(file, title, level) {
     data += '#';
   }
   data += ` ${title}\n\n`;
-  fs.appendFile(file, data, (err) => {
-    if (err)
-      throw err;
-  });
+  fs.appendFileSync(file, data);
+}
+
+function writeContent(file, content) {
+  let data = `${content}\n\n`;
+  fs.appendFileSync(file, data);
 }
 
 const config = JSON.parse(readFile(configFile, "utf8"));
@@ -62,8 +64,15 @@ if(config) {
   options.append = config.append || null;
 }
 
-walk(dir, (pathname) => {
-  console.log(pathname);
-});
+// walk(dir, (pathname) => {
+//   console.log(pathname);
+// });
 
 writeTitle(readmeFile, options.title, 1);
+
+if(options.append) {
+  options.append.forEach((item) => {
+    writeTitle(readmeFile, item.title, item.level);
+    writeContent(readmeFile, item.content);
+  });
+}
