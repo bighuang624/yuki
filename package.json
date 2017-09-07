@@ -1,6 +1,6 @@
 {
   "name": "yuki",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "一个根据目录内文件生成 README.md 的小工具",
   "author": "bighuang624 <kyonhuang@qq.com>",
   "license": "Apache-2.0",

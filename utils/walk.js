@@ -2,6 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const options = require('./config');
 
+let rootSrc = null;
+
+if(options.repository) {
+  rootSrc = `${options.repository.index}/blob/${options.repository.branch}/`;
+}
 
 function walk(dir, dirCallback, fileCallback) {
   try {
@@ -11,16 +16,19 @@ function walk(dir, dirCallback, fileCallback) {
 
       if (fs.statSync(pathname).isDirectory()) {
         options.ignore.dir && (function (){
+
           let isDirIgnored = false;
           options.ignore.dir.forEach((item) => {
             (pathname.indexOf(item) !== -1) && (isDirIgnored = true);
           });
-          (!isDirIgnored) && walk(pathname, dirCallback, fileCallback);
+          (!isDirIgnored) && dirCallback(file) && walk(pathname, dirCallback, fileCallback);
+
         })();
       }
 
       else {
         (options.ignore.file || options.ignore.extname) && (function (){
+
           let isFileIgnored = false,
             isExtnameIgnored = false;
           options.ignore.file.forEach((item) => {
@@ -28,6 +36,7 @@ function walk(dir, dirCallback, fileCallback) {
             (path.parse(dir).ext === options.ignore.extname) && (isExtnameIgnored = true);
           });
           (!isFileIgnored) && (!isExtnameIgnored) && fileCallback(file);
+
         })();
       }
 

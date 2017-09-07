@@ -6,11 +6,12 @@
 
 ## 正在开发中
 
-v0.0.9
+v0.0.10
 
-#### 需求
+### 需求
 
-找到文件夹下同类型文件，生成 README.md 的目录文件，带有链接。
+* 按照文件夹层叠关系形成各级标题
+* 文件带有链接。
 
 ## 使用方法
 
@@ -61,10 +62,6 @@ touch yuki.config.json
       "title": "维护",
       "level": "2",
       "content": "本文档由 [yuki](https://github.com/bighuang624/yuki) 维护"
-    }, {
-      "title": "参考资料",
-      "level": "2",
-      "content": "[算法（第4版）课后练习答案及相关问题解决方案 - 孙强Jimmy的技术博客 - CSDN博客](http://blog.csdn.net/u013541140/article/details/53222770)"
     }
   ]
 }

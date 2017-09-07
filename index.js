@@ -10,15 +10,16 @@ const dir = path.resolve();
 const readmeFile = path.join(dir, '/README.md');
 
 createREADME(readmeFile);
-
 writeTitle(readmeFile, options.title, 1);
 
 function mapDir(dir) {
   writeTitle(readmeFile, dir, 3);
+  return true;
 }
 
 function mapFile(file) {
   writeItem(readmeFile, file);
+  return true;
 }
 
 walk(dir, mapDir, mapFile);
