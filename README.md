@@ -12,8 +12,59 @@
 
 ## 使用方法
 
+### 安装 yuki
+
 ```bash
 npm install -g yuki
+```
+
+### 进入需要生成 README.md 的文件夹
+
+```bash
+# 请将 <dirname> 换为文件夹路径
+cd <dirname>
+```
+
+### 创建 yuki.config.json
+
+```bash
+touch yuki.config.json
+```
+
+### 修改 yuki.config.json
+
+```json
+{
+  "title": "测试",
+  "repository": "22",
+  "only": {
+    "dir": [".git"],
+    "extname": ["33"],
+    "file": [
+      "yuki.config.json",
+      "README.md",
+      ".DS_Store"
+    ]
+  },
+  "ignore": {
+    "dir": [".git"],
+    "extname": ["33"],
+    "file": [
+      "yuki.config.json",
+      "README.md",
+      ".DS_Store"
+    ]
+  },
+  "append": {
+    
+  }
+}
+```
+
+### 创建 README.md
+
+```bash
+yuki
 ```
 
 ## LICENSE
