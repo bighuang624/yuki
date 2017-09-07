@@ -2,77 +2,32 @@
 
 const fs = require('fs');
 const path = require('path');
+const {walk} = require('./utils/walk');
+const {createREADME, writeTitle, writeContent, writeItem} = require('./utils/write');
+const options = require('./utils/config');
 
 const dir = path.resolve();
-const configFile = path.join(dir, '/yuki.config.json');
 const readmeFile = path.join(dir, '/README.md');
-const options = {};
 
-function walk(dir, callback) {
-  try {
-    fs.readdirSync(dir).forEach(function (file) {
-      let pathname = path.join(dir, file);
-
-      if (fs.statSync(pathname).isDirectory()) {
-        walk(pathname, callback);
-      } else {
-        callback(pathname);
-      }
-    });
-  }
-  catch (e) {
-    console.log(e);
-  }
-}
-
-function readFile(filename, encoding) {
-  try {
-    return fs.readFileSync(filename).toString(encoding);
-  }
-  catch (e) {
-    return null;
-  }
-}
-
-/**
- * 写标题
- * @param file  README.md 文件
- * @param title  md 文件各级标题
- * @param level  标题等级
- */
-function writeTitle(file, title, level) {
-  let data = '';
-  while(level-- !== 0) {
-    data += '#';
-  }
-  data += ` ${title}\n\n`;
-  fs.appendFileSync(file, data);
-}
-
-function writeContent(file, content) {
-  let data = `${content}\n\n`;
-  fs.appendFileSync(file, data);
-}
-
-const config = JSON.parse(readFile(configFile, "utf8"));
-
-if(config) {
-  options.title = config.title || path.parse(dir).base;
-  options.repository = config.repository || null;
-  options.only = config.only || null;
-  options.ignore = config.ignore || null;
-  options.append = config.append || null;
-}
-
-// walk(dir, (pathname) => {
-//   console.log(pathname);
-// });
+createREADME(readmeFile);
 
 writeTitle(readmeFile, options.title, 1);
 
-if(options.append) {
+function mapDir(dir) {
+  writeTitle(readmeFile, dir, 3);
+}
+
+function mapFile(file) {
+  writeItem(readmeFile, file);
+}
+
+walk(dir, mapDir, mapFile);
+
+if (options.append) {
   options.append.forEach((item) => {
     writeTitle(readmeFile, item.title, item.level);
     writeContent(readmeFile, item.content);
   });
 }
+
+console.log('README.md 文件构建成功！');
