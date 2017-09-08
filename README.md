@@ -1,13 +1,16 @@
-<h1 style="text-align: center">yuki</h1>
+<h1 align="center">yuki</h1>
 
-<p style="text-align: center">使用 Node.js 开发的项目目录管理工具，能够将项目内文件结构映射到 README.md
+<p align="center">使用 Node.js 开发的项目目录管理工具，能够将项目内文件结构映射到 README.md</p>
+
+<p align="center">
+<a href="http://kyonhuang.top"><img src="https://img.shields.io/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg" alt="Author"></a>
+<a href="https://www.npmjs.com/package/yuki"><img src="https://img.shields.io/npm/v/yuki.svg" alt="Version"></a>
+<a href="https://github.com/bighuang624/yuki/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/yuki.svg" alt="License"></a>
 </p>
-
-<p style="text-align: center">[![作者](https:\//img.shields.io\/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg)](http:\//kyonhuang.top)
 
 ## 正在开发中
 
-v0.1.0
+若版本号仍低于 1.0.0，请不要使用。
 
 ### 需求
 
