@@ -1,17 +1,19 @@
-# yuki
+<h1 style="text-align: center">yuki</h1>
 
-一个根据目录内文件生成 README.md 的小工具
+<p style="text-align: center">使用 Node.js 开发的项目目录管理工具，能够将项目内文件结构映射到 README.md
+</p>
 
-[![作者](https:\//img.shields.io\/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg)](http:\//kyonhuang.top)
+<p style="text-align: center">[![作者](https:\//img.shields.io\/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg)](http:\//kyonhuang.top)
 
 ## 正在开发中
 
-v0.0.10
+v0.1.0
 
 ### 需求
 
-* 按照文件夹层叠关系形成各级标题
-* 文件带有链接。
+* 样式整理
+* 根目录文件放在最前（每进入一个文件夹，先遍历文件，再遍历目录）
+* yuki.config.json 不存在时的问题
 
 ## 使用方法
 
@@ -38,14 +40,16 @@ touch yuki.config.json
 
 ```json
 {
-  // README.md h1 大标题
+  // README.md h1 大标题，默认为所在文件夹名
   "title": "《算法（第4版）》笔记及代码",
   // github 库地址，如果配置了这项会给每个文件加上超链接
   "repository": {
     "index": "https://github.com/bighuang624/Algorithms-notes",
     "branch": "master"
   },
-  // 需要忽略的目录、扩展名和文件
+  // 目录开始的标题等级，默认为 1，即该目录下的文件夹名等级为 2
+  "startLevel": 2,
+  // 需要忽略的目录、扩展名和文件，都以数组表示
   "ignore": {
     "dir": [".git"],
     "extname": [".json"],
@@ -56,8 +60,17 @@ touch yuki.config.json
       ".DS_Store"
     ]
   },
+  // 在大标题之后，目录之前添加的内容
+  // 每个对象可选择包含标题、标题等级和内容
+  "prefix": [{
+      "content": "[![作者](https:\//img.shields.io\/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg)](http:\//kyonhuang.top)"
+    }, {
+      "title": "目录",
+      "level": "2"
+    }
+  ],
   // 在 README.md 末尾添加的内容
-  // 每个对象包含标题、标题等级和内容
+  // 和 prefix 相同，每个对象可选择包含标题、标题等级和内容
   "append": [{
       "title": "维护",
       "level": "2",
@@ -66,6 +79,8 @@ touch yuki.config.json
   ]
 }
 ```
+
+因为 JSON 标准中不含注释，请在使用时将注释去掉。本项目中也提供一份不带注释、可供修改使用的 yuki.config.json 模版。
 
 ### 创建 README.md
 

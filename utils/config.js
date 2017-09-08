@@ -21,7 +21,9 @@ const config = JSON.parse(readFile(configFile, "utf8"));
 if (config) {
   options.title = config.title || path.parse(dir).base;
   options.repository = config.repository || null;
+  options.startLevel = config.startLevel || null;
   options.ignore = config.ignore || null;
+  options.prefix = config.prefix || null;
   options.append = config.append || null;
 }
 

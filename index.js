@@ -12,23 +12,48 @@ const readmeFile = path.join(dir, '/README.md');
 createREADME(readmeFile);
 writeTitle(readmeFile, options.title, 1);
 
-function mapDir(dir) {
-  writeTitle(readmeFile, dir, 3);
+/**
+ * 将文件夹映射为标题
+ * @param dir
+ * @param level
+ * @returns {boolean}  返回真值以执行后面的函数
+ */
+function mapDir(dir, level) {
+  writeTitle(readmeFile, dir, level);
   return true;
 }
 
+/**
+ * 将文件映射为条目
+ * @param file
+ * @returns {boolean}  返回真值以执行后面的函数
+ */
 function mapFile(file) {
   writeItem(readmeFile, file);
   return true;
 }
 
-walk(dir, mapDir, mapFile);
+/**
+ * 写前置或后置的附加内容
+ * @param item
+ */
+function addContent(item) {
+  if (item.title && item.level)
+    writeTitle(readmeFile, item.title, item.level);
+  if (item.content)
+    writeContent(readmeFile, item.content);
+}
+
+
+if (options.prefix) {
+  options.prefix.forEach(addContent);
+}
+
+let topLevel = options.startLevel || 1;
+walk(dir, mapDir, mapFile, topLevel);
 
 if (options.append) {
-  options.append.forEach((item) => {
-    writeTitle(readmeFile, item.title, item.level);
-    writeContent(readmeFile, item.content);
-  });
+  options.append.forEach(addContent);
 }
 
 console.log('README.md 文件构建成功！');
