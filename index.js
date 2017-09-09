@@ -51,7 +51,7 @@ if (options.prefix) {
   options.prefix.forEach(addContent);
 }
 
-let topLevel = options.startLevel || 1;
+let topLevel = options.startLevel || 2;
 walk(dir, mapDir, mapFile, topLevel);
 
 /**
