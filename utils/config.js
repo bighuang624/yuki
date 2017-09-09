@@ -11,12 +11,13 @@ function readFile(filename, encoding) {
     return fs.readFileSync(filename).toString(encoding);
   }
   catch (err) {
-    console.log(err);
     return null;
   }
 }
 
 const config = JSON.parse(readFile(configFile, "utf8"));
+
+options.title = path.parse(dir).base;
 
 if (config) {
   options.title = config.title || path.parse(dir).base;

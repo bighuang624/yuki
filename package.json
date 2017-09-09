@@ -1,6 +1,6 @@
 {
   "name": "yuki",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "使用 Node.js 开发的项目目录管理工具，能够将项目内文件结构映射到 README.md",
   "author": "bighuang624 <kyonhuang@qq.com>",
   "license": "Apache-2.0",

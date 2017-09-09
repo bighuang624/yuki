@@ -16,24 +16,30 @@ function walk(dir, dirCallback, fileCallback, level) {
       let pathname = path.join(dir, file);
 
       if (fs.statSync(pathname).isDirectory()) {
-        options.ignore.dir && (function (){
+
+        if(options.ignore && options.ignore.dir) {
 
           let isDirIgnored = false,
-              newLevel = level + 1;
+            newLevel = level + 1;
           options.ignore.dir.forEach((item) => {
             (pathname.indexOf(item) !== -1) && (isDirIgnored = true);
           });
           (!isDirIgnored) && dirCallback(file, newLevel) && walk(pathname, dirCallback, fileCallback, newLevel);
-
-        })();
+        }
+        else {
+          let newLevel = level + 1;
+          dirCallback(file, newLevel) && walk(pathname, dirCallback, fileCallback, newLevel);
+        }
       }
 
       else {
-        (options.ignore.file || options.ignore.extname) && (function (){
+
+        let src = pathname.replace(rootDir, '');
+
+        if(options.ignore && (options.ignore.file || options.ignore.extname)) {
 
           let isFileIgnored = false,
             isExtnameIgnored = false;
-          let src = pathname.replace(rootDir, '');
 
           options.ignore.file.forEach((item) => {
             (pathname.indexOf(item) !== -1) && (isFileIgnored = true);
@@ -45,8 +51,14 @@ function walk(dir, dirCallback, fileCallback, level) {
             else
               fileCallback(file);
           })();
+        }
 
-        })();
+        else {
+          if(rootSrc)
+            fileCallback(`[${file}](${rootSrc}${src})`);
+          else
+            fileCallback(file);
+        }
       }
 
     });
