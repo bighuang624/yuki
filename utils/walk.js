@@ -5,7 +5,9 @@ const options = require('./config');
 const rootDir = path.resolve();
 let rootSrc;
 
-if(options.repository) {
+if(options.repository && options.repository.index) {
+  if(!options.repository.branch)
+    options.repository.branch = 'master';
   rootSrc = `${options.repository.index}/blob/${options.repository.branch}`;
 }
 

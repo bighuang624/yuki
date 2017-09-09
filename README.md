@@ -16,6 +16,17 @@
 
 * 样式整理
 * 根目录文件放在最前（每进入一个文件夹，先遍历文件，再遍历目录）
+* format：对于给定的扩展名选择表达方式，例如 -md => 去掉.md 加上书名号
+
+## 适用场合
+
+当一份 README.md 的主题内容是项目目录（并且你可能想要让每个文件都带上链接以方便 Github 上在线跳转查看），而你又厌倦了每次增加、修改、删除文件都要对 README 进行维护
+
+－－那么不妨试试 yuki！它可以快速（1s 左右）帮你生成这样的 README.md 文档。你更可以通过配置一份 yuki.config.json 来满足你对文档标题、目录前后内容、要忽略的文件夹，文件，扩展名等要求。
+
+## 效果示例
+
+我的[《算法》笔记及代码](https://github.com/bighuang624/Algorithms-notes)项目的 README.md 完全通过 yuki 生成。你可以点击以查看效果。
 
 ## 使用方法
 
@@ -42,14 +53,16 @@ touch yuki.config.json
 
 ```json
 {
-  // README.md h1 大标题，默认为所在文件夹名
+  // README.md的大标题（h1），默认为所在文件夹名
   "title": "《算法（第4版）》笔记及代码",
-  // github 库地址，如果配置了这项会给每个文件加上超链接
+  // github库地址，如果配置了这项会给每个文件加上超链接
+  // 如果配置，请保证index填写无误。branch默认为master
   "repository": {
     "index": "https://github.com/bighuang624/Algorithms-notes",
     "branch": "master"
   },
-  // 目录开始的标题等级，默认为 1，即该目录下的文件夹名等级为 2
+  // 目录开始的标题等级
+  // 默认为1，即该目录下的文件夹名等级从2开始，随层级深入递减
   "startLevel": 2,
   // 需要忽略的目录、扩展名和文件，都以数组表示
   "ignore": {
@@ -64,6 +77,7 @@ touch yuki.config.json
   },
   // 在大标题之后，目录之前添加的内容
   // 每个对象可选择包含标题、标题等级和内容
+  // 其中，标题和标题等级需在一个对象中一同填写
   "prefix": [{
       "content": "[![作者](https:\//img.shields.io\/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg)](http:\//kyonhuang.top)"
     }, {
@@ -71,8 +85,8 @@ touch yuki.config.json
       "level": "2"
     }
   ],
-  // 在 README.md 末尾添加的内容
-  // 和 prefix 相同，每个对象可选择包含标题、标题等级和内容
+  // 在README.md末尾添加的内容
+  // 和prefix相同，每个对象可选择包含标题、标题等级和内容
   "append": [{
       "title": "维护",
       "level": "2",

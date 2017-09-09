@@ -44,7 +44,9 @@ function addContent(item) {
     writeContent(readmeFile, item.content);
 }
 
-
+/**
+ * 写前置的附加内容
+ */
 if (options.prefix) {
   options.prefix.forEach(addContent);
 }
@@ -52,6 +54,9 @@ if (options.prefix) {
 let topLevel = options.startLevel || 1;
 walk(dir, mapDir, mapFile, topLevel);
 
+/**
+ * 写后置的附加内容
+ */
 if (options.append) {
   options.append.forEach(addContent);
 }
