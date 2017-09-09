@@ -8,9 +8,9 @@
 <a href="https://github.com/bighuang624/yuki/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/yuki.svg" alt="License"></a>
 </p>
 
-## 正在开发中
+## 正在开发中！
 
-若版本号仍低于 1.0.0，请不要使用。
+请不要使用版本号仍低于 1.0.0 的版本。
 
 ### 需求
 
@@ -20,9 +20,14 @@
 
 ## 适用场合
 
-当一份 README.md 的主题内容是项目目录（并且你可能想要让每个文件都带上链接以方便 Github 上在线跳转查看），而你又厌倦了每次增加、修改、删除文件都要对 README 进行维护
+当一份 README.md 的主体内容是项目目录，而你又厌倦了每次增加、修改、删除项目中文件时都要对 README 进行维护，那么不妨试试 yuki！
 
-－－那么不妨试试 yuki！它可以快速（1s 左右）帮你生成这样的 README.md 文档。你更可以通过配置一份 yuki.config.json 来满足你对文档标题、目录前后内容、要忽略的文件夹，文件，扩展名等要求。
+它可以快速（1s 左右）帮你生成符合要求的 README.md 文档。你更可以通过配置一份 yuki.config.json 来满足你的以下需求：
+
+* 固定文档标题
+* 目录前后增加固定内容
+* 映射时忽略指定文件夹、文件、扩展名。
+* 让每个文件都带上 Github 的链接以方便在线跳转查看
 
 ## 效果示例
 
@@ -97,6 +102,8 @@ touch yuki.config.json
 ```
 
 因为 JSON 标准中不含注释，请在使用时将注释去掉。本项目中也提供一份不带注释、可供修改使用的 yuki.config.json 模版。
+
+不需要的配置选项请全部删除。
 
 ### 创建 README.md
 

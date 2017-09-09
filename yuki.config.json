@@ -4,10 +4,10 @@
     "index": "https://github.com/bighuang624/Algorithms-notes",
     "branch": "master"
   },
-  "startLevel": 1,
+  "startLevel": 2,
   "ignore": {
     "dir": [".git"],
-    "extname": [".json"],
+    "extname": [".txt"],
     "file": [
       "yuki.config.json",
       ".gitignore",
