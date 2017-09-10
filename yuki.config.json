@@ -6,8 +6,12 @@
   },
   "startLevel": 2,
   "ignore": {
-    "dir": [".git"],
-    "extname": [".txt"],
+    "dir": [
+      ".git"
+    ],
+    "extname": [
+      ".txt"
+    ],
     "file": [
       "yuki.config.json",
       ".gitignore",
@@ -15,11 +19,20 @@
       ".DS_Store"
     ]
   },
-  "prefix": [{
+  "format": [
+    {
+      "extname": ".md",
+      "withoutExt": true,
+      "withBookmark": true
+    }
+  ],
+  "prefix": [
+    {
       "content": "[![作者](https:\//img.shields.io\/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg)](http:\//kyonhuang.top)"
     }
   ],
-  "append": [{
+  "append": [
+    {
       "title": "维护",
       "level": "2",
       "content": "本文档由 [yuki](https://github.com/bighuang624/yuki) 维护"

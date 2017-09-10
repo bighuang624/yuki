@@ -24,6 +24,7 @@ if (config) {
   options.repository = config.repository || null;
   options.startLevel = config.startLevel || null;
   options.ignore = config.ignore || null;
+  options.format = config.format || null;
   options.prefix = config.prefix || null;
   options.append = config.append || null;
 }

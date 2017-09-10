@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const {walk} = require('./utils/walk');
-const {createREADME, writeTitle, writeContent, writeItem} = require('./utils/write');
+const {createREADME, writeTitle, writeContent, writeItem, writeLinebreak} = require('./utils/write');
 const options = require('./utils/config');
 
 const dir = path.resolve();
@@ -19,7 +19,7 @@ writeTitle(readmeFile, options.title, 1);
  * @returns {boolean}  返回真值以执行后面的函数
  */
 function mapDir(dir, level) {
-  writeTitle(readmeFile, dir, level);
+  writeTitle(readmeFile, dir, level, true);
   return true;
 }
 
@@ -51,8 +51,12 @@ if (options.prefix) {
   options.prefix.forEach(addContent);
 }
 
+/**
+ * 文件和目录遍历
+ */
 let topLevel = options.startLevel || 2;
 walk(dir, mapDir, mapFile, topLevel);
+writeLinebreak(readmeFile);
 
 /**
  * 写后置的附加内容

@@ -5,8 +5,8 @@ const options = require('./config');
 const rootDir = path.resolve();
 let rootSrc;
 
-if(options.repository && options.repository.index) {
-  if(!options.repository.branch)
+if (options.repository && options.repository.index) {
+  if (!options.repository.branch)
     options.repository.branch = 'master';
   rootSrc = `${options.repository.index}/blob/${options.repository.branch}`;
 }
@@ -21,16 +21,16 @@ function walk(dir, dirCallback, fileCallback, level) {
 
       if (fs.statSync(pathname).isDirectory()) {
 
-        if(options.ignore && options.ignore.dir) {
+        if (options.ignore && options.ignore.dir) {
 
           let isDirIgnored = false;
           options.ignore.dir.forEach((item) => {
             (pathname.indexOf(item) !== -1) && (isDirIgnored = true);
           });
-          (!isDirIgnored) && dirQueue.push({ pathname, file });
+          (!isDirIgnored) && dirQueue.push({pathname, file});
         }
         else {
-          dirQueue.push({ pathname, file });
+          dirQueue.push({pathname, file});
         }
       }
 
@@ -38,10 +38,17 @@ function walk(dir, dirCallback, fileCallback, level) {
 
         let src = pathname.replace(rootDir, '');
 
-        if(options.ignore && (options.ignore.file || options.ignore.extname)) {
+        function runCallback(filename) {
+          if (rootSrc)
+            fileCallback(`[${filename}](${rootSrc}${src})`);
+          else
+            fileCallback(filename);
+        }
 
-          let isFileIgnored = false,
-            isExtnameIgnored = false;
+        if (options.ignore && (options.ignore.file || options.ignore.extname)) {
+
+          let isFileIgnored = false;
+          let isExtnameIgnored = false;
 
           options.ignore.file && options.ignore.file.forEach((item) => {
             (pathname.indexOf(item) !== -1) && (isFileIgnored = true);
@@ -50,18 +57,26 @@ function walk(dir, dirCallback, fileCallback, level) {
             (path.parse(pathname).ext === item) && (isExtnameIgnored = true);
           });
           (!isFileIgnored) && (!isExtnameIgnored) && (function () {
-            if(rootSrc)
-              fileCallback(`[${file}](${rootSrc}${src})`);
-            else
-              fileCallback(file);
+
+            if (options.format) {
+              let formatFilename = file;
+              options.format.forEach((item) => {
+                if(item.extname && path.parse(pathname).ext === item.extname) {
+                  item.withoutExt && (formatFilename = formatFilename.replace(item.extname, ''));
+                  item.withBookmark && (formatFilename = `《${formatFilename}》`);
+                }
+              });
+              runCallback(formatFilename);
+            }
+            else {
+              runCallback(file);
+            }
+
           })();
         }
 
         else {
-          if(rootSrc)
-            fileCallback(`[${file}](${rootSrc}${src})`);
-          else
-            fileCallback(file);
+          runCallback(file);
         }
       }
 
