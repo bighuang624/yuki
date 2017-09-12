@@ -15,6 +15,7 @@
 ### 需求
 
 * 测试：WINDOWS 环境下，以及 yuki.config.json 内各种选项删掉后能不能正常运行
+* 现在遍历的顺序是什么？创建时间还是名字？
 
 ## 适用场合
 
@@ -33,6 +34,8 @@
 我的[《算法》笔记及代码](https://github.com/bighuang624/Algorithms-notes)项目的 README.md 完全通过 yuki 生成。你可以点击以查看效果。
 
 ## 使用方法
+
+请确认你使用的电脑有 Node 环境。
 
 ### 安装 yuki
 
@@ -60,7 +63,8 @@ touch yuki.config.json
   // README.md的大标题（h1），默认为所在文件夹名
   "title": "《算法（第4版）》笔记及代码",
   // github库地址，如果配置了这项会给每个文件加上超链接
-  // 如果配置，请保证index填写无误。branch默认为master
+  // 如果配置，请保证index填写无误，且所有文件名不含空格（否则链接无法正确表示）
+  // branch默认为master
   "repository": {
     "index": "https://github.com/bighuang624/Algorithms-notes",
     "branch": "master"
@@ -81,8 +85,8 @@ touch yuki.config.json
   },
   // 根据扩展名选择对展示的文件名做一些处理
   // 每个扩展名的配置需要单独一个对象
-  // 目前支持省略扩展名 "withoutExt": true
-  // 和加上书名号 "withBookmark": true
+  // 目前支持省略扩展名"withoutExt": true
+  // 和加上书名号"withBookmark": true
   "format": [
     {
       "extname": ".md",
