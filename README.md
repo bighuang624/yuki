@@ -12,15 +12,6 @@
 <img src="https://raw.githubusercontent.com/bighuang624/yuki/master/example.gif">
 </p>
 
-## 正在开发中！
-
-请不要使用版本号仍低于 1.0.0 的版本。
-
-### 需求
-
-* 测试：WINDOWS 环境下的换行问题
-* 现在遍历的顺序是按照名字
-
 ## 适用场合
 
 当一份 README.md 的主体内容是项目目录，而你又厌倦了每次增加、修改、删除项目中文件时都要对 README 进行维护，那么不妨试试 yuki！
@@ -130,6 +121,13 @@ touch yuki.config.json
 ```bash
 yuki
 ```
+
+## 注意事项
+
+* 目前版本在 Windows 系统下可能有换行的 bug
+* 生成的文档中文件和文件夹按照名称顺序排列
+* 如果你觉得这个小工具还不错，或者使用时觉得很方便、减轻了重复的工作负担，那么不妨点一个 star 作为鼓励
+* 欢迎开 issue 或者提交 PR 
 
 ## LICENSE
 
