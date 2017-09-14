@@ -8,6 +8,10 @@
 <a href="https://github.com/bighuang624/yuki/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/yuki.svg" alt="License"></a>
 </p>
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/bighuang624/yuki/master/example.gif">
+</p>
+
 ## 正在开发中！
 
 请不要使用版本号仍低于 1.0.0 的版本。
