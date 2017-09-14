@@ -1,5 +1,6 @@
 const fs = require('fs');
-const linebreak = (process.platform === 'win32') ? '\n\r' : '\n';
+const os = require('os');
+const linebreak = os.EOL;
 
 function createREADME(file) {
   try {

@@ -76,7 +76,19 @@ function walk(dir, dirCallback, fileCallback, level) {
         }
 
         else {
-          runCallback(file);
+          if (options.format) {
+            let formatFilename = file;
+            options.format.forEach((item) => {
+              if(item.extname && path.parse(pathname).ext === item.extname) {
+                item.withoutExt && (formatFilename = formatFilename.replace(item.extname, ''));
+                item.withBookmark && (formatFilename = `《${formatFilename}》`);
+              }
+            });
+            runCallback(formatFilename);
+          }
+          else {
+            runCallback(file);
+          }
         }
       }
 

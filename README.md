@@ -14,8 +14,8 @@
 
 ### 需求
 
-* 测试：WINDOWS 环境下的换行问题，以及 yuki.config.json 内各种选项删掉后能不能正常运行
-* 现在遍历的顺序是什么？创建时间还是名字？
+* 测试：WINDOWS 环境下的换行问题
+* 现在遍历的顺序是按照名字
 
 ## 适用场合
 
@@ -58,7 +58,7 @@ touch yuki.config.json
 
 ### 配置 yuki.config.json（可选）
 
-```json
+```
 {
   // README.md的大标题（h1），默认为所在文件夹名
   "title": "《算法（第4版）》笔记及代码",
