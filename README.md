@@ -99,7 +99,7 @@ touch yuki.config.json
       "content": "[![作者](https:\//img.shields.io\/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg)](http:\//kyonhuang.top)"
     }, {
       "title": "目录",
-      "level": "2"
+      "level": 2
     }
   ],
   // 在README.md末尾添加的内容
@@ -107,7 +107,7 @@ touch yuki.config.json
   "append": [
     {
       "title": "维护",
-      "level": "2",
+      "level": 2,
       "content": "本文档由 [yuki](https://github.com/bighuang624/yuki) 维护"
     }
   ]

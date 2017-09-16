@@ -1,6 +1,6 @@
 {
   "name": "yuki",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A project directory management tool, which helps you to map the file structure inside a project to README.md",
   "author": "bighuang624 <kyonhuang@qq.com>",
   "license": "Apache-2.0",
