@@ -28,7 +28,7 @@
 
 ## 效果示例
 
-我的[《算法》笔记及代码](https://github.com/bighuang624/Algorithms-notes)项目的 README.md 完全通过 yuki 生成。你可以点击以查看效果。
+我的[每天一题 LeetCode](https://github.com/bighuang624/LeetCode-everyday)项目的 README.md 完全通过 yuki 生成。你可以点击以查看效果。
 
 ## 使用方法
 
