@@ -5,6 +5,8 @@
 <p align="center">
 <a href="http://kyonhuang.top"><img src="https://img.shields.io/badge/%E4%BD%9C%E8%80%85-KyonHuang-7AD6FD.svg" alt="Author"></a>
 <a href="https://www.npmjs.com/package/yuki"><img src="https://img.shields.io/npm/v/yuki.svg" alt="Version"></a>
+<a href="https://github.com/bighuang624/yuki/stargazers"><img src="https://img.shields.io/github/stars/bighuang624/yuki.svg" alt="License"></a>
+</p>
 <a href="https://github.com/bighuang624/yuki/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/yuki.svg" alt="License"></a>
 </p>
 
